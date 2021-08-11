@@ -24,3 +24,4 @@ export const ProductItem = memo(ProductItemComponent, (prevProps, nextProps) => 
 // - Pure functional components;
 // - components rendering too often;
 // - Re-renders with same props
+// - Components medium to big size
