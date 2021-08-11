@@ -1,23 +1,17 @@
-import { useMemo } from 'react';
 import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
+  totalPrice: number;
   results: Array<{
     id: number;
     price: number;
+    priceFormatted: string;
     title: string;
   }>
   onAddToWishList: (id: number) => void;
 }
 
-export function SearchResults({ results, onAddToWishList }: SearchResultsProps) {
-  const totalPrice = useMemo(() => {
-    return results.reduce((total, product) => {
-      return total + product.price;
-    }, 0)
-  }, [results])
-  
-
+export function SearchResults({ results, totalPrice, onAddToWishList }: SearchResultsProps) {
   return (
     <div>
       <h2>{totalPrice}</h2>
@@ -34,12 +28,3 @@ export function SearchResults({ results, onAddToWishList }: SearchResultsProps) 
     </div>
   );
 }
-
-
-// When should I use useMemo?
-// in variables
-// a lot of calcs
-// repass the info to a child component (iqualdade referencial)
-
-// when shoul I use useCallback?
-// in functions
